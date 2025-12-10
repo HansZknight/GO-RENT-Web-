@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GO-RENT — Professional Java Console Application</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Meta Tags -->
+  <meta name="theme-color" content="#030315">
+  <meta name="description" content="GO-RENT - Sistem Rental Kendaraan Modern berbasis Java Console dengan arsitektur clean code">
+  <meta name="keywords" content="GO-RENT, rental kendaraan, java, console application">
+  <meta name="author" content="Hans / Sirhan Muzaffar">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+</head>
+<body>
+  <!-- ========== PRELOADER ========== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">
+        <span class="preloader-icon">🚗</span>
+        <span class="preloader-text">GO-RENT</span>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+      </div>
+      <div class="preloader-status">
+        <span class="status-text">Initializing</span>
+        <span class="status-dots">
+          <span>.</span><span>.</span><span>.</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SCROLL PROGRESS ========== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ========== CUSTOM CURSOR ========== -->
+  <div class="cursor-outer" id="cursorOuter"></div>
+  <div class="cursor-inner" id="cursorInner"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- ========== BACKGROUND EFFECTS ========== -->
+  <div class="bg-effects">
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+    <canvas id="particlesCanvas"></canvas>
+  </div>
+  
+  <!-- Floating Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- ========== TOAST CONTAINER ========== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">
+        <span>🚗</span>
+      </div>
+      <span class="nav-logo-text">GO-RENT</span>
+    </a>
+    
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active" data-section="home">Home</a>
+      <a href="#features" class="nav-link" data-section="features">Features</a>
+      <a href="#demo" class="nav-link" data-section="demo">Demo</a>
+      <a href="#calculator" class="nav-link" data-section="calculator">Calculator</a>
+      <a href="#tech" class="nav-link" data-section="tech">Tech Stack</a>
+      <a href="#code" class="nav-link" data-section="code">Code</a>
+      <a href="#roadmap" class="nav-link" data-section="roadmap">Roadmap</a>
+      <a href="#faq" class="nav-link" data-section="faq">FAQ</a>
+      <a href="#author" class="nav-link" data-section="author">Author</a>
+      <a href="https://github.com/HansZknight/GO-RENT-Sewa-Kendaraan-Sederhana-" class="nav-cta" target="_blank" rel="noopener">
+        <span class="cta-icon">⭐</span>
+        <span class="cta-text">Star on GitHub</span>
+      </a>
+    </div>
+    
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <!-- Hero Text -->
+        <div class="hero-text">
+          <div class="hero-badge">
+            <div class="badge-dot"></div>
+            <span class="badge-text">Alpha Release v1.0</span>
+            <div class="badge-shine"></div>
+          </div>
+          
+          <h1 class="hero-title">
+            <span class="title-line">
+              <span class="title-word" data-animate="1">Sistem</span>
+              <span class="title-word" data-animate="2">Rental</span>
+            </span>
+            <span class="title-line">
+              <span class="title-gradient" data-animate="3">Kendaraan Modern</span>
+            </span>
+          </h1>
+          
+          <p class="hero-desc">
+            GO-RENT adalah aplikasi rental kendaraan berbasis <strong>Java Console</strong> dengan 
+            arsitektur clean code, fitur lengkap, dan tampilan terminal yang estetis.
+            Dirancang untuk pembelajaran dan pengembangan sistem rental skala enterprise.
+          </p>
+          
+          <div class="hero-actions">
+            <a href="#demo" class="btn btn-primary">
+              <span class="btn-bg"></span>
+              <span class="btn-content">
+                <span class="btn-icon">▶</span>
+                <span class="btn-text">Lihat Demo</span>
+              </span>
+            </a>
+            <a href="https://github.com/HansZknight/GO-RENT-Sewa-Kendaraan-Sederhana-" class="btn btn-secondary" target="_blank" rel="noopener">
+              <span class="btn-icon">📂</span>
+              <span class="btn-text">Source Code</span>
+            </a>
+            <a href="#calculator" class="btn btn-outline">
+              <span class="btn-icon">🧮</span>
+              <span class="btn-text">Calculator</span>
+            </a>
+          </div>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value" data-count="500" data-suffix="+">0</div>
+              <div class="stat-label">Lines of Code</div>
+              <div class="stat-bar"><div class="stat-fill" style="--fill: 85%"></div></div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-value" data-count="8" data-suffix="">0</div>
+              <div class="stat-label">Core Features</div>
+              <div class="stat-bar"><div class="stat-fill" style="--fill: 100%"></div></div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-value" data-count="100" data-suffix="%">0</div>
+              <div class="stat-label">Java Pure</div>
+              <div class="stat-bar"><div class="stat-fill" style="--fill: 100%"></div></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hero Visual -->
+        <div class="hero-visual">
+          <div class="visual-glow"></div>
+          
+          <!-- Floating Elements -->
+          <div class="floating-elements">
+            <div class="floating-item floating-1">
+              <span class="floating-icon">☕</span>
+              <span class="floating-text">Java SE 8+</span>
+            </div>
+            <div class="floating-item floating-2">
+              <span class="floating-icon">📊</span>
+              <span class="floating-text">OOP Design</span>
+            </div>
+            <div class="floating-item floating-3">
+              <span class="floating-icon">🔒</span>
+              <span class="floating-text">MIT License</span>
+            </div>
+            <div class="floating-item floating-4">
+              <span class="floating-icon">⚡</span>
+              <span class="floating-text">Fast & Light</span>
+            </div>
+          </div>
+          
+          <!-- Terminal Window -->
+          <div class="hero-terminal">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red" data-tooltip="Close"></span>
+                <span class="dot yellow" data-tooltip="Minimize"></span>
+                <span class="dot green" data-tooltip="Maximize"></span>
+              </div>
+              <div class="terminal-title">
+                <span class="terminal-icon">⌨️</span>
+                <span>terminal — go-rent</span>
+              </div>
+              <div class="terminal-actions">
+                <button class="terminal-btn" data-tooltip="Copy">📋</button>
+              </div>
+            </div>
+            <div class="terminal-body" id="heroTerminal">
+              <div class="terminal-line" data-delay="0">
+                <span class="prompt">$</span>
+                <span class="command typing" data-text="javac TBPDDPUAS.java"></span>
+              </div>
+              <div class="terminal-line" data-delay="1">
+                <span class="output success">Compiled successfully ✓</span>
+              </div>
+              <div class="terminal-line" data-delay="2">
+                <span class="prompt">$</span>
+                <span class="command typing" data-text="java TBPDDPUAS"></span>
+              </div>
+              <div class="terminal-output-box" data-delay="3">
+                <pre class="ascii-art">
+╔═══════════════════════════════════╗
+║   🚗  <span class="highlight">GO-RENT</span> v1.0  🏍️   ║
+╠═══════════════════════════════════╣
+║  [1] Sewa Mobil                   ║
+║  [2] Sewa Motor                   ║
+║  [3] Cek Stok Kendaraan           ║
+║  [4] Riwayat Transaksi            ║
+║  [5] Keluar                       ║
+╚═══════════════════════════════════╝</pre>
+              </div>
+              <div class="terminal-line" data-delay="4">
+                <span class="prompt">Pilih menu [1-5]:</span>
+                <span class="cursor"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span class="scroll-text">Scroll untuk explore</span>
+        <div class="scroll-arrow">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES SECTION ========== -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span class="label-text">Features</span>
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Fitur Unggulan Aplikasi</h2>
+        <p class="section-desc">
+          Dibangun dengan prinsip clean code dan OOP, GO-RENT menyediakan 
+          berbagai fitur untuk pengelolaan rental kendaraan yang efisien.
+        </p>
+      </div>
+      
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-glow"></div>
+          <div class="card-border"></div>
+          <div class="feature-icon" data-color="cyan">
+            <span>🚗</span>
+            <div class="icon-ring"></div>
+          </div>
+          <h3 class="feature-title">Rental Mobil</h3>
+          <p class="feature-desc">
+            Sistem penyewaan mobil lengkap dengan berbagai pilihan jenis kendaraan,
+            validasi stok real-time, dan kalkulasi harga otomatis.
+          </p>
+          <div class="feature-tags">
+            <span class="tag">Multi-unit</span>
+            <span class="tag">Auto-pricing</span>
+            <span class="tag">Validation</span>
+          </div>
+          <div class="feature-footer">
+            <span class="feature-status active">
+              <span class="status-dot"></span>
+              Available
+            </span>
+          </div>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-glow"></div>
+          <div class="card-border"></div>
+          <div class="feature-icon" data-color="pink">
+            <span>🏍️</span>
+            <div class="icon-ring"></div>
+          </div>
+          <h3 class="feature-title">Rental Motor</h3>
+          <p class="feature-desc">
+            Opsi rental motor dengan pilihan unit beragam, cocok untuk 
+            kebutuhan transportasi fleksibel dengan harga terjangkau.
+          </p>
+          <div class="feature-tags">
+            <span class="tag">Economy</span>
+            <span class="tag">Flexible</span>
+            <span class="tag">Fast</span>
+          </div>
+          <div class="feature-footer">
+            <span class="feature-status active">
+              <span class="status-dot"></span>
+              Available
+            </span>
+          </div>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-glow"></div>
+          <div class="card-border"></div>
+          <div class="feature-icon" data-color="yellow">
+            <span>💰</span>
+            <div class="icon-ring"></div>
+          </div>
+          <h3 class="feature-title">Smart Discount</h3>
+          <p class="feature-desc">
+            Sistem diskon otomatis berdasarkan durasi sewa. 
+            ≥3 hari mendapat 10%, ≥7 hari mendapat 15% potongan.
+          </p>
+          <div class="feature-tags">
+            <span class="tag">10% (3+ days)</span>
+            <span class="tag">15% (7+ days)</span>
+          </div>
+          <div class="feature-footer">
+            <span class="feature-status active">
+              <span class="status-dot"></span>
+              Active
+            </span>
+          </div>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-glow"></div>
+          <div class="card-border"></div>
+          <div class="feature-icon" data-color="green">
+            <span>📊</span>
+            <div class="icon-ring"></div>
+          </div>
+          <h3 class="feature-title">Inventory Management</h3>
+          <p class="feature-desc">
+            Monitoring stok real-time untuk semua unit kendaraan. 
+            Mencegah overbooking dan memastikan ketersediaan unit.
+          </p>
+          <div class="feature-tags">
+            <span class="tag">Real-time</span>
+            <span class="tag">Stock Alert</span>
+            <span class="tag">Tracking</span>
+          </div>
+          <div class="feature-footer">
+            <span class="feature-status active">
+              <span class="status-dot"></span>
+              Monitoring
+            </span>
+          </div>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-glow"></div>
+          <div class="card-border"></div>
+          <div class="feature-icon" data-color="purple">
+            <span>🧾</span>
+            <div class="icon-ring"></div>
+          </div>
+          <h3 class="feature-title">Digital Receipt</h3>
+          <p class="feature-desc">
+            Generate struk pembayaran detail dengan informasi lengkap 
+            transaksi, termasuk breakdown harga dan diskon.
+          </p>
+          <div class="feature-tags">
+            <span class="tag">Detailed</span>
+            <span class="tag">Professional</span>
+            <span class="tag">Print-ready</span>
+          </div>
+          <div class="feature-footer">
+            <span class="feature-status active">
+              <span class="status-dot"></span>
+              Ready
+            </span>
+          </div>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-glow"></div>
+          <div class="card-border"></div>
+          <div class="feature-icon" data-color="orange">
+            <span>📜</span>
+            <div class="icon-ring"></div>
+          </div>
+          <h3 class="feature-title">Transaction History</h3>
+          <p class="feature-desc">
+            Riwayat transaksi tersimpan hingga 100 entry terakhir 
+            untuk keperluan audit dan tracking pelanggan.
+          </p>
+          <div class="feature-tags">
+            <span class="tag">100 entries</span>
+            <span class="tag">Audit Ready</span>
+            <span class="tag">Search</span>
+          </div>
+          <div class="feature-footer">
+            <span class="feature-status active">
+              <span class="status-dot"></span>
+              Logging
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DEMO SECTION ========== -->
+  <section class="section demo-section" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span class="label-text">Live Demo</span>
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Interactive Preview</h2>
+        <p class="section-desc">
+          Lihat tampilan antarmuka terminal GO-RENT dengan menu interaktif dan informasi detail.
+        </p>
+      </div>
+      
+      <div class="demo-container">
+        <!-- Demo Terminal -->
+        <div class="demo-terminal" data-aos="fade-right">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">GO-RENT Terminal v1.0</div>
+            <div class="terminal-tabs">
+              <button class="tab active" data-tab="menu">Menu</button>
+              <button class="tab" data-tab="stock">Stock</button>
+              <button class="tab" data-tab="history">History</button>
+            </div>
+          </div>
+          
+          <div class="terminal-body">
+            <!-- Tab: Menu -->
+            <div class="tab-content active" id="tabMenu">
+              <pre class="ascii-logo">
+   ██████╗  ██████╗       ██████╗ ███████╗███╗   ██╗████████╗
+  ██╔════╝ ██╔═══██╗      ██╔══██╗██╔════╝████╗  ██║╚══██╔══╝
+  ██║  ███╗██║   ██║█████╗██████╔╝█████╗  ██╔██╗ ██║   ██║   
+  ██║   ██║██║   ██║╚════╝██╔══██╗██╔══╝  ██║╚██╗██║   ██║   
+  ╚██████╔╝╚██████╔╝      ██║  ██║███████╗██║ ╚████║   ██║   
+   ╚═════╝  ╚═════╝       ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   
+              </pre>
+              <div class="menu-divider">═══════════ SISTEM RENTAL KENDARAAN ═══════════</div>
+              
+              <div class="menu-items">
+                <div class="menu-item" data-menu="1" onclick="handleMenuClick(1)">
+                  <div class="menu-number">1</div>
+                  <div class="menu-text">SEWA MOBIL</div>
+                  <div class="menu-badge available">AVAILABLE</div>
+                </div>
+                <div class="menu-item" data-menu="2" onclick="handleMenuClick(2)">
+                  <div class="menu-number">2</div>
+                  <div class="menu-text">SEWA MOTOR</div>
+                  <div class="menu-badge available">AVAILABLE</div>
+                </div>
+                <div class="menu-item" data-menu="3" onclick="handleMenuClick(3)">
+                  <div class="menu-number">3</div>
+                  <div class="menu-text">CEK STOK UNIT</div>
+                  <div class="menu-badge ready">READY</div>
+                </div>
+                <div class="menu-item" data-menu="4" onclick="handleMenuClick(4)">
+                  <div class="menu-number">4</div>
+                  <div class="menu-text">RIWAYAT TRANSAKSI</div>
+                  <div class="menu-badge info" id="historyCount">0 RECORDS</div>
+                </div>
+                <div class="menu-item" data-menu="5" onclick="handleMenuClick(5)">
+                  <div class="menu-number">5</div>
+                  <div class="menu-text">KELUAR</div>
+                  <div class="menu-badge exit">EXIT</div>
+                </div>
+              </div>
+              
+              <div class="menu-input">
+                <span class="prompt">Pilih menu [1-5]:</span>
+                <input type="text" class="menu-input-field" id="menuInput" maxlength="1" autocomplete="off">
+                <span class="cursor blink"></span>
+              </div>
+            </div>
+            
+            <!-- Tab: Stock -->
+            <div class="tab-content" id="tabStock">
+              <div class="stock-header">📦 STOK KENDARAAN</div>
+              <div class="stock-grid">
+                <div class="stock-category">
+                  <h4>🚗 MOBIL</h4>
+                  <div class="stock-items">
+                    <div class="stock-item">
+                      <span class="stock-name">Toyota Avanza</span>
+                      <div class="stock-bar">
+                        <div class="stock-fill" style="--stock: 80%"></div>
+                      </div>
+                      <span class="stock-count" id="stockAvanza">4/5</span>
+                    </div>
+                    <div class="stock-item">
+                      <span class="stock-name">Toyota Innova</span>
+                      <div class="stock-bar">
+                        <div class="stock-fill" style="--stock: 100%"></div>
+                      </div>
+                      <span class="stock-count" id="stockInnova">3/3</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="stock-category">
+                  <h4>🏍️ MOTOR</h4>
+                  <div class="stock-items">
+                    <div class="stock-item">
+                      <span class="stock-name">Honda Beat</span>
+                      <div class="stock-bar">
+                        <div class="stock-fill" style="--stock: 90%"></div>
+                      </div>
+                      <span class="stock-count" id="stockBeat">9/10</span>
+                    </div>
+                    <div class="stock-item">
+                      <span class="stock-name">Honda Vario</span>
+                      <div class="stock-bar">
+                        <div class="stock-fill" style="--stock: 75%"></div>
+                      </div>
+                      <span class="stock-count" id="stockVario">6/8</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Tab: History -->
+            <div class="tab-content" id="tabHistory">
+              <div class="history-header">📜 RIWAYAT TRANSAKSI</div>
+              <div class="history-list" id="historyList">
+                <div class="history-empty">
+                  <span class="empty-icon">📭</span>
+                  <span class="empty-text">Belum ada transaksi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Demo Sidebar -->
+        <div class="demo-sidebar" data-aos="fade-left">
+          <!-- System Info -->
+          <div class="info-card">
+            <div class="card-header">
+              <span class="card-icon">📋</span>
+              <h4 class="card-title">System Info</h4>
+            </div>
+            <ul class="info-list">
+              <li>
+                <span class="info-label">Version</span>
+                <span class="info-value">1.0.0-alpha</span>
+              </li>
+              <li>
+                <span class="info-label">Language</span>
+                <span class="info-value">Java SE 8+</span>
+              </li>
+              <li>
+                <span class="info-label">Platform</span>
+                <span class="info-value">Console/CLI</span>
+              </li>
+              <li>
+                <span class="info-label">License</span>
+                <span class="info-value">MIT</span>
+              </li>
+              <li>
+                <span class="info-label">Author</span>
+                <span class="info-value">HansZknight</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Pricing Info -->
+          <div class="info-card">
+            <div class="card-header">
+              <span class="card-icon">💰</span>
+              <h4 class="card-title">Pricing Structure</h4>
+            </div>
+            <ul class="info-list pricing">
+              <li>
+                <span class="info-label">
+                  <span class="vehicle-icon">🚗</span> Avanza
+                </span>
+                <span class="info-value price">Rp 350.000/hari</span>
+              </li>
+              <li>
+                <span class="info-label">
+                  <span class="vehicle-icon">🚗</span> Innova
+                </span>
+                <span class="info-value price">Rp 500.000/hari</span>
+              </li>
+              <li>
+                <span class="info-label">
+                  <span class="vehicle-icon">🏍️</span> Beat
+                </span>
+                <span class="info-value price">Rp 75.000/hari</span>
+              </li>
+              <li>
+                <span class="info-label">
+                  <span class="vehicle-icon">🏍️</span> Vario
+                </span>
+                <span class="info-value price">Rp 100.000/hari</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Discount Info -->
+          <div class="info-card highlight">
+            <div class="card-header">
+              <span class="card-icon">🏷️</span>
+              <h4 class="card-title">Discount Rules</h4>
+            </div>
+            <div class="discount-tiers">
+              <div class="discount-tier">
+                <div class="tier-badge bronze">10%</div>
+                <div class="tier-info">
+                  <span class="tier-condition">≥ 3 Hari</span>
+                  <span class="tier-desc">Diskon Bronze</span>
+                </div>
+              </div>
+              <div class="discount-tier">
+                <div class="tier-badge gold">15%</div>
+                <div class="tier-info">
+                  <span class="tier-condition">≥ 7 Hari</span>
+                  <span class="tier-desc">Diskon Gold</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CALCULATOR SECTION ========== -->
+  <section class="section calculator-section" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span class="label-text">Calculator</span>
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Rental Price Calculator</h2>
+        <p class="section-desc">
+          Hitung estimasi biaya rental kendaraan dengan kalkulator interaktif.
+        </p>
+      </div>
+      
+      <div class="calculator-container" data-aos="fade-up">
+        <div class="calculator-card">
+          <div class="calc-header">
+            <span class="calc-icon">🧮</span>
+            <h3 class="calc-title">Kalkulasi Biaya Rental</h3>
+          </div>
+          
+          <div class="calc-body">
+            <div class="calc-row">
+              <div class="calc-group">
+                <label class="calc-label" for="vehicleType">Tipe Kendaraan</label>
+                <div class="calc-select-wrapper">
+                  <select class="calc-select" id="vehicleType">
+                    <option value="">Pilih Kendaraan</option>
+                    <optgroup label="🚗 Mobil">
+                      <option value="avanza" data-price="350000">Toyota Avanza - Rp 350.000/hari</option>
+                      <option value="innova" data-price="500000">Toyota Innova - Rp 500.000/hari</option>
+                    </optgroup>
+                    <optgroup label="🏍️ Motor">
+                      <option value="beat" data-price="75000">Honda Beat - Rp 75.000/hari</option>
+                      <option value="vario" data-price="100000">Honda Vario - Rp 100.000/hari</option>
+                    </optgroup>
+                  </select>
+                  <span class="select-arrow">▼</span>
+                </div>
+              </div>
+              
+              <div class="calc-group">
+                <label class="calc-label" for="rentalDays">Durasi Sewa (Hari)</label>
+                <div class="calc-input-wrapper">
+                  <button class="calc-btn minus" onclick="adjustDays(-1)">−</button>
+                  <input type="number" class="calc-input" id="rentalDays" min="1" max="30" value="1">
+                  <button class="calc-btn plus" onclick="adjustDays(1)">+</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="calc-row">
+              <div class="calc-group">
+                <label class="calc-label" for="customerName">Nama Pelanggan</label>
+                <input type="text" class="calc-text-input" id="customerName" placeholder="Masukkan nama...">
+              </div>
+              
+              <div class="calc-group">
+                <label class="calc-label" for="unitCount">Jumlah Unit</label>
+                <div class="calc-input-wrapper">
+                  <button class="calc-btn minus" onclick="adjustUnits(-1)">−</button>
+                  <input type="number" class="calc-input" id="unitCount" min="1" max="5" value="1">
+                  <button class="calc-btn plus" onclick="adjustUnits(1)">+</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="calc-actions">
+              <button class="btn btn-primary calc-submit" onclick="calculateRental()">
+                <span class="btn-icon">💵</span>
+                <span class="btn-text">Hitung Total</span>
+              </button>
+              <button class="btn btn-secondary calc-reset" onclick="resetCalculator()">
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">Reset</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="calc-result" id="calcResult" style="display: none;">
+            <div class="result-header">
+              <span class="result-icon">🧾</span>
+              <span class="result-title">Estimasi Biaya</span>
+            </div>
+            <div class="result-body">
+              <div class="result-row">
+                <span class="result-label">Kendaraan</span>
+                <span class="result-value" id="resultVehicle">-</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Harga per Hari</span>
+                <span class="result-value" id="resultPrice">-</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Durasi Sewa</span>
+                <span class="result-value" id="resultDays">-</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Jumlah Unit</span>
+                <span class="result-value" id="resultUnits">-</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Subtotal</span>
+                <span class="result-value" id="resultSubtotal">-</span>
+              </div>
+              <div class="result-row discount" id="discountRow" style="display: none;">
+                <span class="result-label">
+                  <span class="discount-badge" id="discountBadge">0%</span>
+                  Diskon
+                </span>
+                <span class="result-value discount" id="resultDiscount">-</span>
+              </div>
+              <div class="result-divider"></div>
+              <div class="result-row total">
+                <span class="result-label">TOTAL BAYAR</span>
+                <span class="result-value total" id="resultTotal">-</span>
+              </div>
+            </div>
+            <div class="result-footer">
+              <button class="btn btn-outline" onclick="printReceipt()">
+                <span class="btn-icon">🖨️</span>
+                <span class="btn-text">Print Receipt</span>
+              </button>
+              <button class="btn btn-primary" onclick="saveTransaction()">
+                <span class="btn-icon">💾</span>
+                <span class="btn-text">Simpan Transaksi</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TECH STACK SECTION ========== -->
+  <section class="section tech-section" id="tech">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span class="label-text">Technology</span>
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Tech Stack & Tools</h2>
+        <p class="section-desc">
+          Teknologi dan tools yang digunakan dalam pengembangan GO-RENT.
+        </p>
+      </div>
+      
+      <div class="tech-grid">
+        <div class="tech-card" data-aos="zoom-in" data-aos-delay="0">
+          <div class="tech-glow"></div>
+          <div class="tech-icon">☕</div>
+          <h4 class="tech-name">Java</h4>
+          <p class="tech-desc">Core programming language</p>
+          <div class="tech-level">
+            <div class="level-bar">
+              <div class="level-fill" style="--level: 95%"></div>
+            </div>
+            <span class="level-text">Expert</span>
+          </div>
+        </div>
+        
+        <div class="tech-card" data-aos="zoom-in" data-aos-delay="50">
+          <div class="tech-glow"></div>
+          <div class="tech-icon">🎯</div>
+          <h4 class="tech-name">OOP</h4>
+          <p class="tech-desc">Object-Oriented Design</p>
+          <div class="tech-level">
+            <div class="level-bar">
+              <div class="level-fill" style="--level: 90%"></div>
+            </div>
+            <span class="level-text">Advanced</span>
+          </div>
+        </div>
+        
+        <div class="tech-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="tech-glow"></div>
+          <div class="tech-icon">📦</div>
+          <h4 class="tech-name">Arrays</h4>
+          <p class="tech-desc">Data structures</p>
+          <div class="tech-level">
+            <div class="level-bar">
+              <div class="level-fill" style="--level: 85%"></div>
+            </div>
+            <span class="level-text">Proficient</span>
+          </div>
+        </div>
+        
+        <div class="tech-card" data-aos="zoom-in" data-aos-delay="150">
+          <div class="tech-glow"></div>
+          <div class="tech-icon">🔄</div>
+          <h4 class="tech-name">Scanner</h4>
+          <p class="tech-desc">User input handling</p>
+          <div class="tech-level">
+            <div class="level-bar">
+              <div class="level-fill" style="--level: 80%"></div>
+            </div>
+            <span class="level-text">Proficient</span>
+          </div>
+        </div>
+        
+        <div class="tech-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="tech-glow"></div>
+          <div class="tech-icon">🖥️</div>
+          <h4 class="tech-name">Console</h4>
+          <p class="tech-desc">CLI interface</p>
+          <div class="tech-level">
+            <div class="level-bar">
+              <div class="level-fill" style="--level: 88%"></div>
+            </div>
+            <span class="level-text">Advanced</span>
+          </div>
+        </div>
+        
+        <div class="tech-card" data-aos="zoom-in" data-aos-delay="250">
+          <div class="tech-glow"></div>
+          <div class="tech-icon">🔧</div>
+          <h4 class="tech-name">Git</h4>
+          <p class="tech-desc">Version control</p>
+          <div class="tech-level">
+            <div class="level-bar">
+              <div class="level-fill" style="--level: 75%"></div>
+            </div>
+            <span class="level-text">Intermediate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CODE SECTION ========== -->
+  <section class="section code-section" id="code">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span class="label-text">Source Code</span>
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Quick Start Guide</h2>
+        <p class="section-desc">
+          Clone, compile, dan jalankan dalam hitungan detik.
+        </p>
+      </div>
+      
+      <div class="code-showcase">
+        <!-- Installation -->
+        <div class="code-block" data-aos="fade-right">
+          <div class="code-header">
+            <div class="code-file">
+              <span class="file-icon terminal"></span>
+              <span class="file-name">Installation</span>
+            </div>
+            <div class="code-actions">
+              <button class="code-btn" onclick="copyCode(this, 'install')" data-tooltip="Copy code">
+                <span class="btn-icon">📋</span>
+                <span class="btn-text">Copy</span>
+              </button>
+            </div>
+          </div>
+          <div class="code-body">
+            <pre class="code-content" id="installCode"><code><span class="line"><span class="line-number">1</span><span class="comment"># Clone repository</span></span>
+<span class="line"><span class="line-number">2</span><span class="function">git clone</span> https://github.com/HansZknight/GO-RENT.git</span>
+<span class="line"><span class="line-number">3</span></span>
+<span class="line"><span class="line-number">4</span><span class="comment"># Navigate to directory</span></span>
+<span class="line"><span class="line-number">5</span><span class="function">cd</span> GO-RENT</span>
+<span class="line"><span class="line-number">6</span></span>
+<span class="line"><span class="line-number">7</span><span class="comment"># Compile Java file</span></span>
+<span class="line"><span class="line-number">8</span><span class="function">javac</span> TBPDDPUAS.java</span>
+<span class="line"><span class="line-number">9</span></span>
+<span class="line"><span class="line-number">10</span><span class="comment"># Run the application</span></span>
+<span class="line"><span class="line-number">11</span><span class="function">java</span> TBPDDPUAS</span></code></pre>
+          </div>
+        </div>
+        
+        <!-- Java Code Sample -->
+        <div class="code-block" data-aos="fade-left">
+          <div class="code-header">
+            <div class="code-file">
+              <span class="file-icon java"></span>
+              <span class="file-name">TBPDDPUAS.java</span>
+            </div>
+            <div class="code-actions">
+              <button class="code-btn" onclick="copyCode(this, 'java')" data-tooltip="Copy code">
+                <span class="btn-icon">📋</span>
+                <span class="btn-text">Copy</span>
+              </button>
+            </div>
+          </div>
+          <div class="code-body">
+            <pre class="code-content" id="javaCode"><code><span class="line"><span class="line-number">1</span><span class="keyword">import</span> java.util.Scanner;</span>
+<span class="line"><span class="line-number">2</span></span>
+<span class="line"><span class="line-number">3</span><span class="keyword">public class</span> <span class="class-name">TBPDDPUAS</span> {</span>
+<span class="line"><span class="line-number">4</span>  <span class="comment">// Data kendaraan</span></span>
+<span class="line"><span class="line-number">5</span>  <span class="keyword">static</span> String[] mobil = {<span class="string">"Avanza"</span>, <span class="string">"Innova"</span>};</span>
+<span class="line"><span class="line-number">6</span>  <span class="keyword">static int</span>[] hargaMobil = {<span class="number">350000</span>, <span class="number">500000</span>};</span>
+<span class="line"><span class="line-number">7</span>  <span class="keyword">static int</span>[] stokMobil = {<span class="number">5</span>, <span class="number">3</span>};</span>
+<span class="line"><span class="line-number">8</span></span>
+<span class="line"><span class="line-number">9</span>  <span class="keyword">public static void</span> <span class="function">main</span>(String[] args) {</span>
+<span class="line"><span class="line-number">10</span>    Scanner input = <span class="keyword">new</span> Scanner(System.in);</span>
+<span class="line"><span class="line-number">11</span>    <span class="function">showMenu</span>();</span>
+<span class="line"><span class="line-number">12</span>  }</span>
+<span class="line"><span class="line-number">13</span>}</span></code></pre>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Code Features -->
+      <div class="code-features" data-aos="fade-up">
+        <div class="code-feature">
+          <span class="feature-icon">✅</span>
+          <span class="feature-text">Clean Code Architecture</span>
+        </div>
+        <div class="code-feature">
+          <span class="feature-icon">✅</span>
+          <span class="feature-text">Well Documented</span>
+        </div>
+        <div class="code-feature">
+          <span class="feature-icon">✅</span>
+          <span class="feature-text">Easy to Extend</span>
+        </div>
+        <div class="code-feature">
+          <span class="feature-icon">✅</span>
+          <span class="feature-text">No Dependencies</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ROADMAP SECTION ========== -->
+  <section class="section roadmap-section" id="roadmap">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span class="label-text">Roadmap</span>
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Development Timeline</h2>
+        <p class="section-desc">
+          Rencana pengembangan GO-RENT ke depan untuk fitur yang lebih lengkap.
+        </p>
+      </div>
+      
+      <div class="roadmap-timeline">
+        <div class="timeline-line"></div>
+        
+        <!-- Phase 1 -->
+        <div class="roadmap-item" data-aos="fade-right">
+          <div class="roadmap-content">
+            <div class="roadmap-phase">Phase 1 — Core</div>
+            <h4 class="roadmap-title">
+              <span class="title-icon">🎯</span>
+              Console Application
+            </h4>
+            <p class="roadmap-desc">
+              Aplikasi console dengan fitur dasar rental: pemilihan unit, 
+              kalkulasi harga, diskon, dan struk pembayaran.
+            </p>
+            <div class="roadmap-features">
+              <span class="feature-tag">✓ Menu System</span>
+              <span class="feature-tag">✓ Price Calculator</span>
+              <span class="feature-tag">✓ Discount Logic</span>
+              <span class="feature-tag">✓ Receipt Generator</span>
+            </div>
+            <div class="roadmap-status done">
+              <span class="status-icon">✓</span>
+              <span class="status-text">Completed</span>
+            </div>
+          </div>
+          <div class="roadmap-dot done">
+            <span class="dot-ring"></span>
+          </div>
+          <div class="roadmap-spacer"></div>
+        </div>
+        
+        <!-- Phase 2 -->
+        <div class="roadmap-item reverse" data-aos="fade-left">
+          <div class="roadmap-spacer"></div>
+          <div class="roadmap-dot progress">
+            <span class="dot-ring"></span>
+          </div>
+          <div class="roadmap-content">
+            <div class="roadmap-phase">Phase 2 — Database</div>
+            <h4 class="roadmap-title">
+              <span class="title-icon">🗄️</span>
+              Data Persistence
+            </h4>
+            <p class="roadmap-desc">
+              Integrasi dengan MySQL/SQLite untuk penyimpanan data 
+              transaksi, pelanggan, dan inventory secara permanen.
+            </p>
+            <div class="roadmap-features">
+              <span class="feature-tag">JDBC Connection</span>
+              <span class="feature-tag">CRUD Operations</span>
+              <span class="feature-tag">Data Export</span>
+            </div>
+            <div class="roadmap-status progress">
+              <span class="status-icon">🔄</span>
+              <span class="status-text">In Progress</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Phase 3 -->
+        <div class="roadmap-item" data-aos="fade-right">
+          <div class="roadmap-content">
+            <div class="roadmap-phase">Phase 3 — GUI</div>
+            <h4 class="roadmap-title">
+              <span class="title-icon">🖼️</span>
+              Desktop Application
+            </h4>
+            <p class="roadmap-desc">
+              Antarmuka grafis modern dengan JavaFX atau Swing 
+              untuk pengalaman pengguna yang lebih baik.
+            </p>
+            <div class="roadmap-features">
+              <span class="feature-tag">JavaFX UI</span>
+              <span class="feature-tag">Modern Design</span>
+              <span class="feature-tag">Charts & Reports</span>
+            </div>
+            <div class="roadmap-status planned">
+              <span class="status-icon">📋</span>
+              <span class="status-text">Planned</span>
+            </div>
+          </div>
+          <div class="roadmap-dot planned">
+            <span class="dot-ring"></span>
+          </div>
+          <div class="roadmap-spacer"></div>
+        </div>
+        
+        <!-- Phase 4 -->
+        <div class="roadmap-item reverse" data-aos="fade-left">
+          <div class="roadmap-spacer"></div>
+          <div class="roadmap-dot future">
+            <span class="dot-ring"></span>
+          </div>
+          <div class="roadmap-content">
+            <div class="roadmap-phase">Phase 4 — Web</div>
+            <h4 class="roadmap-title">
+              <span class="title-icon">🌐</span>
+              Web Application
+            </h4>
+            <p class="roadmap-desc">
+              Konversi ke aplikasi web dengan Spring Boot + React 
+              untuk akses multi-platform dan online booking.
+            </p>
+            <div class="roadmap-features">
+              <span class="feature-tag">Spring Boot</span>
+              <span class="feature-tag">React Frontend</span>
+              <span class="feature-tag">REST API</span>
+              <span class="feature-tag">Online Booking</span>
+            </div>
+            <div class="roadmap-status planned">
+              <span class="status-icon">📋</span>
+              <span class="status-text">Planned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ SECTION ========== -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span class="label-text">FAQ</span>
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">
+          Pertanyaan yang sering ditanyakan tentang GO-RENT.
+        </p>
+      </div>
+      
+      <div class="faq-container" data-aos="fade-up">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">❓</span>
+            <span class="faq-text">Apa itu GO-RENT?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              GO-RENT adalah aplikasi rental kendaraan berbasis Java Console yang dirancang 
+              untuk pembelajaran pemrograman dasar. Aplikasi ini mendemonstrasikan konsep 
+              OOP, array, conditional, looping, dan input handling di Java.
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">💻</span>
+            <span class="faq-text">Bagaimana cara menjalankan aplikasi?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <ol>
+                <li>Pastikan Java JDK 8+ sudah terinstall</li>
+                <li>Clone repository dari GitHub</li>
+                <li>Compile dengan: <code>javac TBPDDPUAS.java</code></li>
+                <li>Jalankan dengan: <code>java TBPDDPUAS</code></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">💰</span>
+            <span class="faq-text">Bagaimana sistem diskon bekerja?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Sistem diskon otomatis berdasarkan durasi sewa:
+              <ul>
+                <li><strong>Sewa 3+ hari:</strong> Diskon 10%</li>
+                <li><strong>Sewa 7+ hari:</strong> Diskon 15%</li>
+              </ul>
+              Diskon dihitung dari total harga sewa sebelum pajak.
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">📝</span>
+            <span class="faq-text">Apakah saya bisa berkontribusi?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Tentu! GO-RENT adalah proyek open source dengan lisensi MIT. 
+              Anda dapat berkontribusi melalui:
+              <ul>
+                <li>Fork repository dan submit pull request</li>
+                <li>Laporkan bug melalui GitHub Issues</li>
+                <li>Berikan star ⭐ untuk mendukung proyek</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🔮</span>
+            <span class="faq-text">Apa rencana pengembangan selanjutnya?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Roadmap pengembangan GO-RENT meliputi:
+              <ul>
+                <li><strong>Phase 2:</strong> Integrasi database MySQL/SQLite</li>
+                <li><strong>Phase 3:</strong> GUI dengan JavaFX</li>
+                <li><strong>Phase 4:</strong> Web application dengan Spring Boot + React</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AUTHOR SECTION ========== -->
+  <section class="section author-section" id="author">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span class="label-text">Developer</span>
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Meet The Creator</h2>
+      </div>
+      
+      <div class="author-card" data-aos="zoom-in">
+        <div class="author-bg"></div>
+        <div class="author-content">
+          <div class="author-avatar">
+        <div class="avatar-ring"></div>
+        <div class="avatar-inner">
+          <img src="assets/Hans UBB.jpg" alt="Sirhan Muzaffar" class="avatar-photo" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:50%;">
+        </div>
+        <div class="avatar-status online"></div>
+          </div>
+          
+          <h3 class="author-name">Hans / Sirhan Muzaffar</h3>
+          <p class="author-role">Teknologi Informasi Student • Full Stack Developer</p>
+          
+          <div class="author-badges">
+            <span class="badge">☕ Java</span>
+            <span class="badge">🌐 Web Dev</span>
+            <span class="badge">📱 Mobile</span>
+            <span class="badge">🎨 UI/UX</span>
+          </div>
+          
+          <p class="author-bio">
+            Mahasiswa Teknologi Informasi dengan passion di bidang software development.
+            Tertarik dengan web development, mobile apps, dan UI/UX design.
+            Proyek GO-RENT dibuat sebagai tugas UAS mata kuliah 
+            Dasar-Dasar Pemrograman dengan pendekatan clean code.
+          </p>
+          
+          <div class="author-stats">
+            <div class="author-stat">
+              <span class="stat-value">10+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="author-stat">
+              <span class="stat-value">5+</span>
+              <span class="stat-label">Years Coding</span>
+            </div>
+            <div class="author-stat">
+              <span class="stat-value">∞</span>
+              <span class="stat-label">Passion</span>
+            </div>
+          </div>
+          
+          <div class="author-links">
+            <a href="https://github.com/HansZknight" class="author-link github" target="_blank" rel="noopener">
+              <span class="link-icon">🔗</span>
+              <span class="link-text">GitHub</span>
+            </a>
+            <a href="https://www.instagram.com/hanszknight_/" class="author-link instagram" target="_blank" rel="noopener">
+              <span class="link-icon">📸</span>
+              <span class="link-text">Instagram</span>
+            </a>
+            <a href="mailto:sirhanmuzaffar.id01@gmail.com" class="author-link email">
+              <span class="link-icon">✉️</span>
+              <span class="link-text">Email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">🚗</span>
+            <span class="logo-text">GO-RENT</span>
+          </div>
+          <p class="footer-tagline">Sistem Rental Kendaraan Modern berbasis Java Console</p>
+          <div class="footer-social">
+            <a href="https://github.com/HansZknight" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+              <span>🔗</span>
+            </a>
+            <a href="https://www.instagram.com/hanszknight_/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              <span>📸</span>
+            </a>
+            <a href="mailto:sirhanmuzaffar.id01@gmail.com" class="social-link" aria-label="Email">
+              <span>✉️</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4 class="column-title">Navigation</h4>
+            <ul class="column-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#demo">Demo</a></li>
+              <li><a href="#calculator">Calculator</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="column-title">Resources</h4>
+            <ul class="column-links">
+              <li><a href="#code">Source Code</a></li>
+              <li><a href="#tech">Tech Stack</a></li>
+              <li><a href="#roadmap">Roadmap</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="column-title">External</h4>
+            <ul class="column-links">
+              <li><a href="https://github.com/HansZknight/GO-RENT-Sewa-Kendaraan-Sederhana-" target="_blank" rel="noopener">GitHub Repo</a></li>
+              <li><a href="https://github.com/HansZknight" target="_blank" rel="noopener">Developer</a></li>
+              <li><a href="#author">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-divider"></div>
+      
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          <p>Made with <span class="heart">💜</span> by <a href="https://github.com/HansZknight" target="_blank" rel="noopener">Hans</a> • © 2025 GO-RENT</p>
+          <p class="license">Licensed under MIT License</p>
+        </div>
+        <div class="footer-actions">
+          <button class="footer-btn ghost" id="downloadBtn">
+            <span class="btn-icon">💾</span>
+            <span class="btn-text">Download HTML</span>
+          </button>
+          <a href="https://github.com/HansZknight/GO-RENT-Sewa-Kendaraan-Sederhana-" class="footer-btn primary" target="_blank" rel="noopener">
+            <span class="btn-icon">⭐</span>
+            <span class="btn-text">Star Project</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCROLL TO TOP ========== -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <span class="scroll-icon">↑</span>
+  </button>
+
+  <!-- ========== KEYBOARD SHORTCUTS HINT ========== -->
+  <div class="keyboard-hint" id="keyboardHint">
+    <span class="hint-text">Press</span>
+    <kbd>?</kbd>
+    <span class="hint-text">for shortcuts</span>
+  </div>
+
+  <!-- ========== KEYBOARD SHORTCUTS MODAL ========== -->
+  <div class="shortcuts-modal" id="shortcutsModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>⌨️ Keyboard Shortcuts</h3>
+        <button class="modal-close" onclick="closeShortcutsModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="shortcut-group">
+          <h4>Navigation</h4>
+          <div class="shortcut-item">
+            <kbd>H</kbd>
+            <span>Go to Home</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>F</kbd>
+            <span>Go to Features</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>D</kbd>
+            <span>Go to Demo</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>C</kbd>
+            <span>Go to Calculator</span>
+          </div>
+        </div>
+        <div class="shortcut-group">
+          <h4>Actions</h4>
+          <div class="shortcut-item">
+            <kbd>G</kbd>
+            <span>Open GitHub</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>T</kbd>
+            <span>Toggle Theme</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>↑</kbd>
+            <span>Scroll to Top</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>?</kbd>
+            <span>Show Shortcuts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="js/particles.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
